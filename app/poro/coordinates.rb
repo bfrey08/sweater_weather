@@ -3,7 +3,7 @@ class Coordinates
               :longitude
 
   def initialize(location)
-    # @lattitude = location
-    # @longitude = location
+    @lattitude = location[:lat]
+    @longitude = location[:lng]
   end
 end

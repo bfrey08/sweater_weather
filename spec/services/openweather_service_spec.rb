@@ -2,8 +2,7 @@ require 'rails_helper'
 
 describe OpenweatherService do
   describe 'get forecast' do
-    it 'can receive a forecast based on lattitude and longitude of a city' do
-      VCR.use_cassette("openweather_denver,CO") do
+    it 'can receive a forecast based on lattitude and longitude of a city', :vcr do
 
       denver_lat = 39.74
       denver_lon = 105.00
@@ -44,7 +43,6 @@ describe OpenweatherService do
       expect(response[:hourly][0]).to have_key(:weather)
       expect(response[:hourly][0][:weather][0]).to have_key(:description)
       expect(response[:hourly][0][:weather][0]).to have_key(:icon)
-      end
     end
   end
 end

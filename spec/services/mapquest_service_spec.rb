@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 describe MapquestService do
-  it 'can return the lat/long' do
-    VCR.use_cassette("mapquest_denver,CO") do
+  it 'can return the location', :vcr do
     location = "Denver,CO"
 
     response = MapquestService.coordinates(location)
@@ -13,7 +12,6 @@ describe MapquestService do
     expect(response[:results][0][:locations][0]).to have_key(:latLng)
     expect(response[:results][0][:locations][0][:latLng]).to have_key(:lat)
     expect(response[:results][0][:locations][0][:latLng]).to have_key(:lng)
-    end
   end
 
 end
