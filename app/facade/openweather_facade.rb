@@ -1,15 +1,15 @@
 class OpenweatherFacade
 
   def self.current_weather(lat, lon)
-    forecast = forecast(lat, lon)
-    current_forecast = forecast[:current]
+    response = service(lat, lon)
+    current_forecast = response[:current]
 
     CurrentWeather.new(current_forecast)
   end
 
   def self.daily_weather(lat, lon)
-    forecast = forecast(lat, lon)
-    daily_forecast = forecast[:daily]
+    response = service(lat, lon)
+    daily_forecast = response[:daily]
 
     daily_forecast[0..4].map do |day|
       DailyWeather.new(day)
@@ -17,8 +17,8 @@ class OpenweatherFacade
   end
 
   def self.hourly_weather(lat, lon)
-    forecast = forecast(lat, lon)
-    hourly_forecast = forecast[:hourly]
+    response = service(lat, lon)
+    hourly_forecast = response[:hourly]
 
     hourly_forecast[0..7].map do |hour|
       HourlyWeather.new(hour)
@@ -26,6 +26,10 @@ class OpenweatherFacade
   end
 
   def self.forecast(lat, lon)
+    Forecast.new(current_weather, daily_weather, hourly_weather)
+  end
+
+  def self.service(lat, lon)
     OpenweatherService.forecast(lat, lon)
 
   end
