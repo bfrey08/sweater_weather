@@ -10,7 +10,6 @@ describe OpenweatherService do
 
       response = OpenweatherService.forecast(denver_lat, denver_lon)
 
-
       expect(response).to be_a(Hash)
       expect(response).to have_key(:lat)
       expect(response).to have_key(:lon)

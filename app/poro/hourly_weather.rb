@@ -6,10 +6,10 @@ class HourlyWeather
 
   def initialize(forecast)
 
-    # time = 
-    # temperature =
-    # conditions =
-    # icon =
+    time = forecast[:dt]
+    temperature = forecast[:temp]
+    conditions = forecast[:weather][0][:description]
+    icon = forecast[:weather][0][:icon]
 
   end
 

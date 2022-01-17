@@ -12,16 +12,17 @@ class CurrentWeather
 
   def initialize(forecast)
 
-    # @datetime = 
-    # @sunrise =
-    # @sunset =
-    # @temperature  =
-    # @feels_like =
-    # @humidity =
-    # @uvi =
-    # @visibility =
-    # @conditions =
-    # @icon =
+    @datetime = forecast[:dt]
+    @sunrise = forecast[:sunrise]
+    @sunset = forecast[:sunset]
+    @temperature  = forecast[:temp]
+    @feels_like = forecast[:feels_like]
+    @humidity = forecast[:humidity]
+    @uvi = forecast[:uvi]
+    @visibility = forecast[:visibility]
+    @conditions = forecast[:weather][0][:description]
+    @icon = forecast[:weather][0][:icon]
 
   end
+
 end
