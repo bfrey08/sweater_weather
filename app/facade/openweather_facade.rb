@@ -26,7 +26,7 @@ class OpenweatherFacade
   end
 
   def self.forecast(lat, lon)
-    Forecast.new(current_weather, daily_weather, hourly_weather)
+    Forecast.new(current_weather(lat, lon), daily_weather(lat, lon), hourly_weather(lat, lon))
   end
 
   def self.service(lat, lon)

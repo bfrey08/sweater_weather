@@ -27,7 +27,17 @@ describe OpenweatherFacade do
       expect(response).to be_a(Array)
       expect(response.count).to eq(8)
       expect(response[0]).to be_an_instance_of(HourlyWeather)
-      
+
+    end
+
+    it 'create a forecast object with the 3 types of weather objects', :vcr do
+      response = OpenweatherFacade.forecast(@denver_lat, @denver_lon)
+
+      expect(response).to be_an_instance_of(Forecast)
+      expect(response.hourly[0]).to be_an_instance_of(HourlyWeather)
+      expect(response.current).to be_an_instance_of(CurrentWeather)
+      expect(response.daily[0]).to be_an_instance_of(DailyWeather)
+
     end
 
   end
