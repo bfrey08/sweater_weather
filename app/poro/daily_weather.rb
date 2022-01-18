@@ -8,14 +8,15 @@ class DailyWeather
               :icon
   def initialize(forecast)
 
-    date = forecast[:dt]
-    sunrise = forecast[:sunrise]
-    sunset = forecast[:sunset]
-    max_temp = forecast[:temp][:max]
-    min_temp = forecast[:temp][:min]
-    conditions = forecast[:weather][0][:description]
-    icon = forecast[:weather][0][:icon]
+    @date = forecast[:dt]
+    @sunrise = forecast[:sunrise]
+    @sunset = forecast[:sunset]
+    @max_temp = forecast[:temp][:max]
+    @min_temp = forecast[:temp][:min]
+    @conditions = forecast[:weather][0][:description]
+    @icon = forecast[:weather][0][:icon]
 
   end
+
 
 end
