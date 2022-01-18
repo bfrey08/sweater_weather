@@ -3,8 +3,8 @@ class Picture
               :image_url,
               :source,
               :author,
-              :author_url
-
+              :author_url,
+              :id
 
   def initialize(picture, location)
 
@@ -13,7 +13,7 @@ class Picture
     @source = "Unsplash"
     @author = picture[:user][:name]
     @author_url = picture[:user][:links][:portfolio]
-
+    @id = nil
   end
 
 end
