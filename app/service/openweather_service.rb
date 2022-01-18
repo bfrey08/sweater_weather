@@ -1,8 +1,10 @@
 class OpenweatherService
 
   def self.forecast(lat, lon)
-    response = url.get("?lat=#{lat}&lon=#{lon}&exclude=minutely&appid=#{ENV['openweather_key']}")
-    parse_response(response)
+    Rails.cache.fetch('pull_open_weath', :expires => 1.hour) do
+      response = url.get("?lat=#{lat}&lon=#{lon}&exclude=minutely&appid=#{ENV['openweather_key']}")
+      parse_response(response)
+    end
   end
 
   def self.url

@@ -1,8 +1,10 @@
 class OpenlibraryService
 
   def self.location_search(location)
-    response = url.get("?place=#{location}")
-    parse_response(response)
+    Rails.cache.fetch('pull_open_lib', :expires => 1.hour) do
+      response = url.get("?place=#{location}")
+      parse_response(response)
+    end
   end
 
   def self.url

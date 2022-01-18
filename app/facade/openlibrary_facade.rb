@@ -1,7 +1,7 @@
 class OpenlibraryFacade
 
   def self.books(location)
-    results = OpenlibraryService.location_search(location)
+    results = service(location)
     book_data = results[:docs]
     book_data.map do |book|
       Book.new(book)
@@ -9,7 +9,7 @@ class OpenlibraryFacade
   end
 
   def self.quantity(location)
-    results = OpenlibraryService.location_search(location)
+    results = service(location)
     results[:numFound]
   end
 
@@ -19,6 +19,13 @@ class OpenlibraryFacade
     forecast = OpenweatherFacade.forecast(coord.lattitude, coord.longitude)
     forecast_light = forecast.forecast_light
     BookSearch.new(quantity(location), books(location)[0..(quantity - 1)], location, forecast_light)
+  end
+
+
+  def self.service(location)
+
+      OpenlibraryService.location_search(location)
+
   end
 
 end
