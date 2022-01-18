@@ -14,7 +14,11 @@ class OpenlibraryFacade
   end
 
   def self.book_search(location, quantity)
-    BookSearch.new(quantity(location), books(location)[0..(quantity - 1)])
+    quantity = quantity.to_i
+    coord = MapquestFacade.coordinates(location)
+    forecast = OpenweatherFacade.forecast(coord.lattitude, coord.longitude)
+    forecast_light = forecast.forecast_light
+    BookSearch.new(quantity(location), books(location)[0..(quantity - 1)], location, forecast_light)
   end
 
 end

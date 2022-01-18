@@ -1,4 +1,4 @@
 class BooksSerializer
   include JSONAPI::Serializer
-  attributes :quantity, :books
+  attributes :destination, :forecast, :total_books_found, :books
 end
