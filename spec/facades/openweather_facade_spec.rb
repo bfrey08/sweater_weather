@@ -34,10 +34,9 @@ describe OpenweatherFacade do
       response = OpenweatherFacade.forecast(@denver_lat, @denver_lon)
 
       expect(response).to be_an_instance_of(Forecast)
-      expect(response.hourly[0]).to be_an_instance_of(HourlyWeather)
-      expect(response.current).to be_an_instance_of(CurrentWeather)
-      expect(response.daily[0]).to be_an_instance_of(DailyWeather)
-
+      expect(response.hourly_weather[0]).to be_an_instance_of(HourlyWeather)
+      expect(response.current_weather).to be_an_instance_of(CurrentWeather)
+      expect(response.daily_weather[0]).to be_an_instance_of(DailyWeather)
     end
 
   end
