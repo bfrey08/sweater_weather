@@ -11,4 +11,9 @@ class Forecast
     @id = nil
   end
 
+  def forecast_light
+            {summary: @current_weather.conditions,
+             temperature: @current_weather.temperature_f
+            }
+  end
 end
