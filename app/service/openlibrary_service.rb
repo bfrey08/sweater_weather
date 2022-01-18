@@ -1,7 +1,7 @@
 class OpenlibraryService
 
   def self.location_search(location)
-    response = url.get("?palce=#{location}")
+    response = url.get("?place=#{location}")
     parse_response(response)
   end
 
