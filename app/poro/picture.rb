@@ -12,7 +12,7 @@ class Picture
     @image_url = picture[:urls][:regular]
     @source = "Unsplash"
     @author = picture[:user][:name]
-    @author_url = picture[:user][:portfolio_url]
+    @author_url = picture[:user][:links][:portfolio]
 
   end
 
