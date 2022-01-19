@@ -15,4 +15,5 @@ class MapquestFacade
     weather_info = OpenweatherFacade.hourly_weather(lat, lon)
     weather_at_eta = weather_info[hours]
     Route.new(from_location, to_location, time, weather_at_eta)
+  end
 end

@@ -9,7 +9,7 @@ class Route
     @start_city = from_location
     @end_city = to_location
     @travel_time = hours_minutes(time)
-    @weather_at_eta = {temperature: weather_info.temperature,
+    @weather_at_eta = {temperature: weather_info.temperature_f,
                       conditions: weather_info.conditions}
   end
   def hours_minutes(time)

@@ -14,4 +14,15 @@ describe MapquestService do
     expect(response[:results][0][:locations][0][:latLng]).to have_key(:lng)
   end
 
+  it 'can return directions', :vcr do
+    from_location = "Denver,CO"
+    to_location = "Estes Park,CO"
+    response = MapquestService.directions(from_location, to_location)
+    expect(response).to be_a(Hash)
+    expect(response).to have_key(:route)
+    expect(response[:route]).to have_key(:realTime)
+
+
+  end
+
 end
