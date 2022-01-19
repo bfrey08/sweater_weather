@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       resources :forecast, only: [:index]
       resources :backgrounds, only: [:index]
       get '/book-search', to: 'books#index'
+      resources :users, only: [:create]
+      resources :sessions, only: [:create]
     end
   end
 end
