@@ -5,7 +5,6 @@ class HourlyWeather
               :icon
 
   def initialize(forecast)
-
     @time = forecast[:dt]
     @temperature = forecast[:temp]
     @conditions = forecast[:weather][0][:description]
@@ -13,7 +12,7 @@ class HourlyWeather
   end
 
   def temperature_f
-    ((@temperature - 273.15) * (9/5) + 32).round(0).to_s.concat(" F")
+    ((@temperature - 273.15) * (1.8) + 32).round(0).to_s.concat(" F")
   end
 
 
