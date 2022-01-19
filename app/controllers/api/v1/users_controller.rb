@@ -12,11 +12,7 @@ class Api::V1::UsersController < ApplicationController
       @user = User.new(email: params[:email])
       @user.password = params[:password]
       wip = @user.save!
-      if @user.save
-        render json: UsersSerializer.new(@user), status: 201
-      else
-        render json: { errors: { details: 'User could not be saved, check input' } }, status: 400
-      end
+      render json: UsersSerializer.new(@user), status: 201
     end
   end
 end
