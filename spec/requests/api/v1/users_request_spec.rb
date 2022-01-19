@@ -6,7 +6,9 @@ describe 'Users API' do
       user = {email: "bfrey16@gmail.com",
               password: "test1234",
               password_confirmation: "test1234"}
-      post "/api/v1/users", headers: headers, params: user
+      headers = {'CONTENT_TYPE' => 'application/json'}
+
+      post "/api/v1/users", headers: headers, params: user.to_json
 
       confirmation = JSON.parse(response.body, symbolize_names: true)
 
@@ -32,8 +34,9 @@ describe 'Users API' do
       user1 = {email: "bfrey16@gmail.com",
                password: "test1234",
                password_confirmation: "test1234"}
+      headers = {'CONTENT_TYPE' => 'application/json'}
 
-      post "/api/v1/users", headers: headers, params: user1
+      post "/api/v1/users", headers: headers, params: user1.to_json
       confirmation = JSON.parse(response.body, symbolize_names: true)
 
       expect(response.status).to eq(400)
@@ -44,7 +47,9 @@ describe 'Users API' do
       user1 = {email: "bfrey16@gmail.com",
                password: "test1234",
                password_confirmation: "test123"}
-      post "/api/v1/users", headers: headers, params: user1
+      headers = {'CONTENT_TYPE' => 'application/json'}
+
+      post "/api/v1/users", headers: headers, params: user1.to_json
       confirmation = JSON.parse(response.body, symbolize_names: true)
       expect(response.status).to eq(400)
       expect(confirmation).to have_key(:errors)

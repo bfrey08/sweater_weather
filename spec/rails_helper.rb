@@ -2,6 +2,7 @@
 require 'simplecov'
 SimpleCov.start
 
+require 'webmock/rspec'
 
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
